@@ -5,9 +5,10 @@
   <title>הארנק הכשר – דף משקיעים</title>
   <style>
     body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
-    header, section { padding: 20px; max-width: 900px; margin: 0 auto; }
-    header { background:#111827; position:sticky; top:0; }
-    h1, h2, h3 { margin: 0 0 10px; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding: 20px; max-width: 900px; margin: 0 auto; }
     .hero { padding:40px 20px; text-align:center; }
     .plans { display:flex; gap:15px; flex-wrap:wrap; }
     .card { background:#111827; border-radius:10px; padding:15px; flex:1 1 250px; border:1px solid #1f2937; }
@@ -22,13 +23,19 @@
 <body>
 
 <header>
-  <h1>הארנק הכשר הראשון – הזדמנות השקעה</h1>
-  <p>מכשיר ESP כשר, ארנק קריפטו ומערכת השקעות מותאמת לציבור החרדי.</p>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <h2>מצטרפים עכשיו לסבב אלפא עד 7.11</h2>
-  <p>מכירה מוקדמת ב־888 ₪, לאחר מכן המחיר מוכפל.</p>
+  <h1>הארנק הכשר הראשון – הזדמנות השקעה</h1>
+  <p>מכשיר ESP כשר, ארנק קריפטו ומערכת השקעות מותאמת לציבור החרדי.</p>
+  <a class="btn" href="contact.html">אני רוצה להשקיע</a>
 </section>
 
 <section>
@@ -76,78 +83,66 @@
 
 <section>
   <h2>תחזיות רווח והחזר השקעה</h2>
-  <p>
-    הנתונים הבאים הם תרחישים להמחשה בלבד, על בסיס הערכות שמרניות לגבי אימוץ הארנק הכשר בציבור החרדי.
-  </p>
-
-  <h3>תרחישים לדוגמה</h3>
   <ul>
     <li><b>תרחיש שמרני:</b> 5,000 משתמשים × 10 ₪ → 600,000 ₪ רווח שנתי.</li>
     <li><b>תרחיש בינוני:</b> 20,000 משתמשים × 15 ₪ → 3,600,000 ₪ רווח שנתי.</li>
     <li><b>תרחיש אגרסיבי:</b> 50,000 משתמשים × 20 ₪ → 12,000,000 ₪ רווח שנתי.</li>
   </ul>
 
-  <h3>מחשבון החזר השקעה למשקיע</h3>
+  <h3>מחשבון החזר השקעה</h3>
   <div class="grid-2">
     <div>
-      <label>מספר משתמשים פעילים צפוי</label>
+      <label>מספר משתמשים פעילים</label>
       <input type="number" id="users" value="20000">
 
-      <label>רווח נקי חודשי למשתמש (₪)</label>
+      <label>רווח חודשי למשתמש (₪)</label>
       <input type="number" id="profitPerUser" value="15">
 
-      <label>אחוז מהרווחים למשקיעים (%)</label>
+      <label>אחוז למשקיעים (%)</label>
       <input type="number" id="investorShare" value="10">
 
-      <label>סכום השקעה שלך (₪)</label>
+      <label>סכום השקעה (₪)</label>
       <input type="number" id="investAmount" value="50000">
 
-      <button class="btn" onclick="calcROI()">חשב החזר משוער</button>
+      <button class="btn" onclick="calcROI()">חשב</button>
     </div>
 
     <div>
-      <h4>תוצאות משוערות</h4>
       <p id="roiResultYear"></p>
       <p id="roiResultReturn"></p>
-      <p style="font-size:12px; color:#9ca3af;">
-        * החישוב להמחשה בלבד, אינו מהווה התחייבות או ייעוץ השקעות.
-      </p>
     </div>
   </div>
 </section>
 
 <footer>
-  &copy; הארנק הכשר – דף משקיעים
+  &copy; כל הזכויות שמורות – הארנק הכשר
 </footer>
 
 <script>
 function suggestPlan() {
   const amount = Number(document.getElementById('amount').value || 0);
   let msg = '';
-  if (amount >= 1000 && amount <= 10000) msg = 'מומלץ: מסלול מיקרו‑השקעה.';
-  else if (amount > 10000 && amount <= 80000) msg = 'מומלץ: מסלול משקיע בינוני.';
-  else if (amount > 80000 && amount <= 500000) msg = 'מומלץ: מסלול אסטרטגי.';
-  else msg = 'הסכום מחוץ לטווח.';
+  if (amount <= 10000) msg = 'מיקרו‑השקעה';
+  else if (amount <= 80000) msg = 'משקיע בינוני';
+  else msg = 'משקיע אסטרטגי';
   document.getElementById('planResult').textContent = msg;
 }
 
 function calcROI() {
-  const users = Number(document.getElementById('users').value || 0);
-  const profitPerUser = Number(document.getElementById('profitPerUser').value || 0);
-  const investorShare = Number(document.getElementById('investorShare').value || 0);
-  const investAmount = Number(document.getElementById('investAmount').value || 0);
+  const users = Number(document.getElementById('users').value);
+  const profitPerUser = Number(document.getElementById('profitPerUser').value);
+  const investorShare = Number(document.getElementById('investorShare').value);
+  const investAmount = Number(document.getElementById('investAmount').value);
 
   const yearlyProfit = users * profitPerUser * 12;
   const investorYearly = yearlyProfit * (investorShare / 100);
-  const yearsToReturn = investorYearly > 0 ? (investAmount / investorYearly) : Infinity;
+  const yearsToReturn = investAmount / investorYearly;
 
   document.getElementById('roiResultYear').textContent =
     'רווח שנתי כולל: ' + yearlyProfit.toLocaleString('he-IL') + ' ₪';
 
   document.getElementById('roiResultReturn').textContent =
-    isFinite(yearsToReturn)
-      ? 'החזר השקעה משוער: ' + yearsToReturn.toFixed(1) + ' שנים.'
-      : 'לא ניתן לחשב החזר.';
+    'החזר השקעה: ' + yearsToReturn.toFixed(1) + ' שנים';
 }
 </script>
 
