@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>הארנק הכשר – דף משקיעים</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header, section { padding: 20px; max-width: 900px; margin: 0 auto; }
+    header { background:#111827; position:sticky; top:0; }
+    h1, h2, h3 { margin: 0 0 10px; }
+    .hero { padding:40px 20px; text-align:center; }
+    .plans { display:flex; gap:15px; flex-wrap:wrap; }
+    .card { background:#111827; border-radius:10px; padding:15px; flex:1 1 250px; border:1px solid #1f2937; }
+    .badge { display:inline-block; background:#10b981; color:#022c22; padding:3px 8px; border-radius:999px; font-size:12px; }
+    .btn { display:inline-block; margin-top:10px; padding:8px 14px; border-radius:6px; background:#3b82f6; color:#fff; text-decoration:none; font-size:14px; cursor:pointer; }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    footer { text-align:center; padding:20px; font-size:12px; color:#9ca3af; }
+    label, input, textarea { display:block; width:100%; margin-bottom:8px; }
+    input, textarea { padding:6px; border-radius:4px; border:1px solid #4b5563; background:#020617; color:#e5e7eb; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>הארנק הכשר הראשון – הזדמנות השקעה</h1>
+  <p>מכשיר ESP כשר, ארנק קריפטו ומערכת השקעות מותאמת לציבור החרדי.</p>
+</header>
+
+<section class="hero">
+  <h2>מצטרפים עכשיו לסבב אלפא עד 7.11</h2>
+  <p>מכירה מוקדמת ב־888 ₪, לאחר מכן המחיר מוכפל.</p>
+</section>
+
+<section>
+  <h2>בחר את סכום ההשקעה שלך</h2>
+  <div class="grid-2">
+    <div>
+      <label for="amount">סכום השקעה (₪)</label>
+      <input type="number" id="amount" min="1000" max="500000" value="10000">
+      <button class="btn" onclick="suggestPlan()">הצג מסלול מומלץ</button>
+      <p id="planResult" style="margin-top:10px; font-weight:bold;"></p>
+    </div>
+    <div>
+      <h3>התקדמות הפרויקט</h3>
+      <ul>
+        <li>✔ פיתוח חומרה</li>
+        <li>✔ חיבור מאובטח לרשתות חינמיות</li>
+        <li>✔ קהילת אלפא ראשונית</li>
+        <li>⏳ מרכזיית השקעות כשרה (SMS ושיחות)</li>
+        <li>⏳ הרחבת שוק ומשקיעים</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>מסלולי השקעה</h2>
+  <div class="plans">
+    <div class="card">
+      <span class="badge">1,000–10,000 ₪</span>
+      <h3>מסלול מיקרו‑השקעה</h3>
+      <p>חוזים עתידיים על מכירות – תשלום קבוע על כל מכשיר שנמכר.</p>
+    </div>
+    <div class="card">
+      <span class="badge">10,000–80,000 ₪</span>
+      <h3>מסלול משקיע בינוני</h3>
+      <p>שותפות ברווחים – אחוז מהרווחים נטו של החברה.</p>
+    </div>
+    <div class="card">
+      <span class="badge">80,000–500,000 ₪</span>
+      <h3>מסלול משקיע אסטרטגי</h3>
+      <p>מניות בחברה – אחוז בעלות לפי שווי חברה.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; הארנק הכשר – טיוטת דף משקיעים מקומי
+</footer>
+
+<script>
+function suggestPlan() {
+  const amount = Number(document.getElementById('amount').value || 0);
+  let msg = '';
+  if (amount >= 1000 && amount <= 10000) {
+    msg = 'מומלץ: מסלול מיקרו‑השקעה (חוזים עתידיים על מכירות).';
+  } else if (amount > 10000 && amount <= 80000) {
+    msg = 'מומלץ: מסלול משקיע בינוני (שותפות ברווחים).';
+  } else if (amount > 80000 && amount <= 500000) {
+    msg = 'מומלץ: מסלול משקיע אסטרטגי (מניות בחברה).';
+  } else {
+    msg = 'הסכום מחוץ לטווח 1,000–500,000 ₪.';
+  }
+  document.getElementById('planResult').textContent = msg;
+}
+</script>
+
+</body>
+</html>
