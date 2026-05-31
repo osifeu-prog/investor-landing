@@ -74,24 +74,80 @@
   </div>
 </section>
 
+<section>
+  <h2>תחזיות רווח והחזר השקעה</h2>
+  <p>
+    הנתונים הבאים הם תרחישים להמחשה בלבד, על בסיס הערכות שמרניות לגבי אימוץ הארנק הכשר בציבור החרדי.
+  </p>
+
+  <h3>תרחישים לדוגמה</h3>
+  <ul>
+    <li><b>תרחיש שמרני:</b> 5,000 משתמשים × 10 ₪ → 600,000 ₪ רווח שנתי.</li>
+    <li><b>תרחיש בינוני:</b> 20,000 משתמשים × 15 ₪ → 3,600,000 ₪ רווח שנתי.</li>
+    <li><b>תרחיש אגרסיבי:</b> 50,000 משתמשים × 20 ₪ → 12,000,000 ₪ רווח שנתי.</li>
+  </ul>
+
+  <h3>מחשבון החזר השקעה למשקיע</h3>
+  <div class="grid-2">
+    <div>
+      <label>מספר משתמשים פעילים צפוי</label>
+      <input type="number" id="users" value="20000">
+
+      <label>רווח נקי חודשי למשתמש (₪)</label>
+      <input type="number" id="profitPerUser" value="15">
+
+      <label>אחוז מהרווחים למשקיעים (%)</label>
+      <input type="number" id="investorShare" value="10">
+
+      <label>סכום השקעה שלך (₪)</label>
+      <input type="number" id="investAmount" value="50000">
+
+      <button class="btn" onclick="calcROI()">חשב החזר משוער</button>
+    </div>
+
+    <div>
+      <h4>תוצאות משוערות</h4>
+      <p id="roiResultYear"></p>
+      <p id="roiResultReturn"></p>
+      <p style="font-size:12px; color:#9ca3af;">
+        * החישוב להמחשה בלבד, אינו מהווה התחייבות או ייעוץ השקעות.
+      </p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  &copy; הארנק הכשר – טיוטת דף משקיעים מקומי
+  &copy; הארנק הכשר – דף משקיעים
 </footer>
 
 <script>
 function suggestPlan() {
   const amount = Number(document.getElementById('amount').value || 0);
   let msg = '';
-  if (amount >= 1000 && amount <= 10000) {
-    msg = 'מומלץ: מסלול מיקרו‑השקעה (חוזים עתידיים על מכירות).';
-  } else if (amount > 10000 && amount <= 80000) {
-    msg = 'מומלץ: מסלול משקיע בינוני (שותפות ברווחים).';
-  } else if (amount > 80000 && amount <= 500000) {
-    msg = 'מומלץ: מסלול משקיע אסטרטגי (מניות בחברה).';
-  } else {
-    msg = 'הסכום מחוץ לטווח 1,000–500,000 ₪.';
-  }
+  if (amount >= 1000 && amount <= 10000) msg = 'מומלץ: מסלול מיקרו‑השקעה.';
+  else if (amount > 10000 && amount <= 80000) msg = 'מומלץ: מסלול משקיע בינוני.';
+  else if (amount > 80000 && amount <= 500000) msg = 'מומלץ: מסלול אסטרטגי.';
+  else msg = 'הסכום מחוץ לטווח.';
   document.getElementById('planResult').textContent = msg;
+}
+
+function calcROI() {
+  const users = Number(document.getElementById('users').value || 0);
+  const profitPerUser = Number(document.getElementById('profitPerUser').value || 0);
+  const investorShare = Number(document.getElementById('investorShare').value || 0);
+  const investAmount = Number(document.getElementById('investAmount').value || 0);
+
+  const yearlyProfit = users * profitPerUser * 12;
+  const investorYearly = yearlyProfit * (investorShare / 100);
+  const yearsToReturn = investorYearly > 0 ? (investAmount / investorYearly) : Infinity;
+
+  document.getElementById('roiResultYear').textContent =
+    'רווח שנתי כולל: ' + yearlyProfit.toLocaleString('he-IL') + ' ₪';
+
+  document.getElementById('roiResultReturn').textContent =
+    isFinite(yearsToReturn)
+      ? 'החזר השקעה משוער: ' + yearsToReturn.toFixed(1) + ' שנים.'
+      : 'לא ניתן לחשב החזר.';
 }
 </script>
 
