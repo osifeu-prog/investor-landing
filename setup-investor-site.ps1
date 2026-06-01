@@ -1,0 +1,340 @@
+# יצירת/עדכון index.html
+@"
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>הארנק הכשר – דף משקיעים</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding: 20px; max-width: 900px; margin: 0 auto; }
+    .hero { padding:40px 20px; text-align:center; }
+    .plans { display:flex; gap:15px; flex-wrap:wrap; }
+    .card { background:#111827; border-radius:10px; padding:15px; flex:1 1 250px; border:1px solid #1f2937; }
+    .badge { display:inline-block; background:#10b981; color:#022c22; padding:3px 8px; border-radius:999px; font-size:12px; }
+    .btn { display:inline-block; margin-top:10px; padding:8px 14px; border-radius:6px; background:#3b82f6; color:#fff; text-decoration:none; font-size:14px; cursor:pointer; }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    footer { text-align:center; padding:20px; font-size:12px; color:#9ca3af; }
+    label, input, textarea { display:block; width:100%; margin-bottom:8px; }
+    input, textarea { padding:6px; border-radius:4px; border:1px solid #4b5563; background:#020617; color:#e5e7eb; }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>הארנק הכשר הראשון – הזדמנות השקעה</h1>
+  <p>מכשיר ESP כשר, ארנק קריפטו ומערכת השקעות מותאמת לציבור החרדי.</p>
+
+  <a class="btn" href="contact.html">אני רוצה להשקיע</a>
+  <a class="btn" href="https://wa.me/972500000000" style="background:#22c55e;">שיחה בוואטסאפ</a>
+  <a class="btn" href="#lead-form" style="background:#f97316;">השאר פרטים לחזרה</a>
+</section>
+
+<section>
+  <h2>בחר את סכום ההשקעה שלך</h2>
+  <div class="grid-2">
+    <div>
+      <label for="amount">סכום השקעה (₪)</label>
+      <input type="number" id="amount" min="1000" max="500000" value="10000">
+      <button class="btn" onclick="suggestPlan()">הצג מסלול מומלץ</button>
+      <p id="planResult" style="margin-top:10px; font-weight:bold;"></p>
+    </div>
+    <div>
+      <h3>התקדמות הפרויקט</h3>
+      <ul>
+        <li>✔ פיתוח חומרה</li>
+        <li>✔ חיבור מאובטח לרשתות חינמיות</li>
+        <li>✔ קהילת אלפא ראשונית</li>
+        <li>⏳ מרכזיית השקעות כשרה (SMS ושיחות)</li>
+        <li>⏳ הרחבת שוק ומשקיעים</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>מסלולי השקעה</h2>
+  <div class="plans">
+    <div class="card">
+      <span class="badge">1,000–10,000 ₪</span>
+      <h3>מסלול מיקרו‑השקעה</h3>
+      <p>חוזים עתידיים על מכירות – תשלום קבוע על כל מכשיר שנמכר.</p>
+    </div>
+    <div class="card">
+      <span class="badge">10,000–80,000 ₪</span>
+      <h3>מסלול משקיע בינוני</h3>
+      <p>שותפות ברווחים – אחוז מהרווחים נטו של החברה.</p>
+    </div>
+    <div class="card">
+      <span class="badge">80,000–500,000 ₪</span>
+      <h3>מסלול משקיע אסטרטגי</h3>
+      <p>מניות בחברה – אחוז בעלות לפי שווי חברה.</p>
+    </div>
+  </div>
+</section>
+
+<section id="lead-form">
+  <h2>השאר פרטים לחזרה מנציג</h2>
+  <div class="grid-2">
+    <div>
+      <label>שם מלא</label>
+      <input type="text" id="leadName">
+
+      <label>טלפון</label>
+      <input type="tel" id="leadPhone">
+
+      <label>סכום השקעה מוערך (₪)</label>
+      <input type="number" id="leadAmount">
+
+      <button class="btn" onclick="leadThanks()">שלח פרטים</button>
+    </div>
+    <div>
+      <p id="leadResult" style="margin-top:20px;"></p>
+      <p style="font-size:12px; color:#9ca3af;">
+        * החישוב והפרטים להמחשה בלבד, אינם מהווים ייעוץ השקעות.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>תחזיות רווח והחזר השקעה</h2>
+  <ul>
+    <li><b>תרחיש שמרני:</b> 5,000 משתמשים × 10 ₪ → 600,000 ₪ רווח שנתי.</li>
+    <li><b>תרחיש בינוני:</b> 20,000 משתמשים × 15 ₪ → 3,600,000 ₪ רווח שנתי.</li>
+    <li><b>תרחיש אגרסיבי:</b> 50,000 משתמשים × 20 ₪ → 12,000,000 ₪ רווח שנתי.</li>
+  </ul>
+
+  <h3>מחשבון החזר השקעה</h3>
+  <div class="grid-2">
+    <div>
+      <label>מספר משתמשים פעילים</label>
+      <input type="number" id="users" value="20000">
+
+      <label>רווח חודשי למשתמש (₪)</label>
+      <input type="number" id="profitPerUser" value="15">
+
+      <label>אחוז למשקיעים (%)</label>
+      <input type="number" id="investorShare" value="10">
+
+      <label>סכום השקעה (₪)</label>
+      <input type="number" id="investAmount" value="50000">
+
+      <button class="btn" onclick="calcROI()">חשב</button>
+    </div>
+
+    <div>
+      <p id="roiResultYear"></p>
+      <p id="roiResultReturn"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; כל הזכויות שמורות – הארנק הכשר
+</footer>
+
+<script>
+function suggestPlan() {
+  const amount = Number(document.getElementById('amount').value || 0);
+  let msg = '';
+  if (amount <= 10000) msg = 'מיקרו‑השקעה';
+  else if (amount <= 80000) msg = 'משקיע בינוני';
+  else msg = 'משקיע אסטרטגי';
+  document.getElementById('planResult').textContent = msg;
+}
+
+function calcROI() {
+  const users = Number(document.getElementById('users').value);
+  const profitPerUser = Number(document.getElementById('profitPerUser').value);
+  const investorShare = Number(document.getElementById('investorShare').value);
+  const investAmount = Number(document.getElementById('investAmount').value);
+
+  const yearlyProfit = users * profitPerUser * 12;
+  const investorYearly = yearlyProfit * (investorShare / 100);
+  const yearsToReturn = investAmount / investorYearly;
+
+  document.getElementById('roiResultYear').textContent =
+    'רווח שנתי כולל: ' + yearlyProfit.toLocaleString('he-IL') + ' ₪';
+
+  document.getElementById('roiResultReturn').textContent =
+    'החזר השקעה: ' + yearsToReturn.toFixed(1) + ' שנים';
+}
+
+function leadThanks() {
+  const name = document.getElementById('leadName').value || 'משקיע';
+  document.getElementById('leadResult').textContent =
+    name + ', תודה! נציג יחזור אליך לתיאום שיחה והצגת ההשקעה.';
+}
+</script>
+
+</body>
+</html>
+"@ | Set-Content -Encoding UTF8 index.html
+
+# about.html
+@"
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>אודות – הארנק הכשר</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding:20px; max-width:900px; margin:0 auto; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+</header>
+<section>
+  <h1>אודות הארנק הכשר</h1>
+  <p>הארנק הכשר נבנה כדי לאפשר לציבור החרדי גישה לעולם הקריפטו וההשקעות בצורה כשרה ומבוקרת.</p>
+</section>
+</body>
+</html>
+"@ | Set-Content -Encoding UTF8 about.html
+
+# faq.html
+@"
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>שאלות נפוצות – הארנק הכשר</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding:20px; max-width:900px; margin:0 auto; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+</header>
+<section>
+  <h1>שאלות נפוצות</h1>
+  <h3>האם המכשיר כשר?</h3>
+  <p>כן. ללא אינטרנט, ללא דפדפן, ללא אפליקציות.</p>
+</section>
+</body>
+</html>
+"@ | Set-Content -Encoding UTF8 faq.html
+
+# contracts.html
+@"
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>חוזים – הארנק הכשר</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding:20px; max-width:900px; margin:0 auto; }
+    .contract { background:#111827; padding:15px; border-radius:10px; margin-bottom:20px; border:1px solid #1f2937; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+</header>
+<section>
+  <h1>חוזי השקעה</h1>
+  <div class="contract">
+    <h3>מסלול מיקרו‑השקעה</h3>
+    <p>השקעה: 1,000–10,000 ₪</p>
+  </div>
+</section>
+</body>
+</html>
+"@ | Set-Content -Encoding UTF8 contracts.html
+
+# contact.html
+@"
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>יצירת קשר – הארנק הכשר</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0f19; color:#fff; margin:0; padding:0; }
+    header { background:#111827; padding:20px; position:sticky; top:0; }
+    nav a { color:#fff; margin-left:15px; text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#3b82f6; }
+    section { padding:20px; max-width:900px; margin:0 auto; }
+    .btn { background:#3b82f6; padding:10px 15px; border-radius:6px; color:#fff; text-decoration:none; display:inline-block; }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html">דף הבית</a>
+    <a href="about.html">אודות</a>
+    <a href="faq.html">שאלות נפוצות</a>
+    <a href="contracts.html">חוזים</a>
+    <a href="contact.html">יצירת קשר</a>
+  </nav>
+</header>
+<section>
+  <h1>יצירת קשר</h1>
+  <p><b>וואטסאפ:</b> <a class="btn" href="https://wa.me/972500000000">שלח הודעה</a></p>
+  <p><b>טלפון:</b> <a class="btn" href="tel:0500000000">התקשר עכשיו</a></p>
+  <p><b>אימייל:</b> investor@example.com</p>
+</section>
+</body>
+</html>
+"@ | Set-Content -Encoding UTF8 contact.html
+
+# Git – שמירה ודחיפה
+git add .
+git commit -m "Auto update investor site"
+git push
+
+# בדיקת סטטוס אתר
+Write-Host "בודק את האתר..."
+try {
+  $resp = Invoke-WebRequest -Uri "https://slh-nft.com/investor-landing/" -UseBasicParsing -TimeoutSec 15
+  Write-Host "סטטוס אתר:" $resp.StatusCode
+} catch {
+  Write-Host "שגיאה בבדיקה – ייתכן שהאתר עדיין מתעדכן."
+}
