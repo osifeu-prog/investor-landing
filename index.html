@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הארנק הכשר  דף משקיעים | SLH</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0f1e 0%, #0c1222 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1e293b;
+            padding: 16px 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #3b82f6; }
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle at 10% 30%, rgba(59,130,246,0.15) 0%, transparent 60%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #f0f9ff, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 100px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #facc15;
+            background: #0f172a;
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 60px;
+            margin: 20px 0;
+        }
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #10b981;
+        }
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 32px;
+            margin: 48px 0;
+        }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5); }
+        .card h3 { font-size: 1.75rem; margin-bottom: 12px; color: #f1f5f9; }
+        .amount { font-size: 2rem; font-weight: bold; color: #3b82f6; margin: 16px 0; }
+        .btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+        }
+        .btn-outline:hover { background: #3b82f6; color: white; }
+        .btn:hover { background: #2563eb; }
+        .calculator {
+            background: #0f172a;
+            border-radius: 28px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+        input, select {
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 12px 16px;
+            border-radius: 16px;
+            color: white;
+            width: 100%;
+            margin: 8px 0 16px;
+        }
+        .result-box {
+            background: #0a0f1e;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #1e293b;
+            margin-top: 60px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .countdown { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">דף הבית</a>
+            <a href="#plans">מסלולי השקעה</a>
+            <a href="#calculator">מחשבון החזר</a>
+            <a href="contact.html">צור קשר</a>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="badge">✨ סבב אלפא - הזדמנות אחרונה</div>
+        <h1>הארנק הכשר הראשון<br>הזדמנות השקעה</h1>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 20px auto;">מכשיר ESP כשר, ארנק קריפטו ומערכת השקעות מותאמת לציבור החרדי</p>
+        <div class="countdown" id="countdown">07 ימים : 00 שעות : 00 דקות</div>
+        <div>מחיר מיוחד לסבב אלפא <span class="price-tag">888</span> <span style="text-decoration: line-through; color:#ef4444;">1,776</span></div>
+        <a href="#contact" class="btn" style="margin-top: 30px;">הצטרף עכשיו</a>
+    </div>
+</section>
+
+<div class="container">
+    <h2 style="text-align:center; margin: 40px 0 20px;">התקדמות הפרויקט</h2>
+    <div class="grid-2">
+        <div class="card">✅ פיתוח חומרה (ESP32 + TFT)</div>
+        <div class="card">✅ חיבור מאובטח לרשתות חינמיות</div>
+        <div class="card">✅ קהילת אלפא ראשונית (80+ חברים)</div>
+        <div class="card">⏳ מרכזיית השקעות כשרה (SMS ושיחות)  80%</div>
+        <div class="card">⏳ הרחבת שוק ומשקיעים  מתחיל בQ3</div>
+    </div>
+
+    <h2 id="plans" style="text-align:center; margin: 60px 0 20px;">מסלולי השקעה</h2>
+    <div class="grid-3">
+        <div class="card"><h3>מיקרו-השקעה</h3><div class="amount">1,000  10,000</div><p>חוזים עתידיים על מכירות  תשלום קבוע על כל מכשיר שנמכר. תשואה צפויה 8-12% לשנה.</p><a href="#contact" class="btn btn-outline">בחר מסלול</a></div>
+        <div class="card"><h3>משקיע בינוני</h3><div class="amount">10,000  80,000</div><p>שותפות ברווחים  אחוז מהרווחים נטו של החברה. דיווח רבעוני.</p><a href="#contact" class="btn btn-outline">בחר מסלול</a></div>
+        <div class="card"><h3>משקיע אסטרטגי</h3><div class="amount">80,000  500,000</div><p>מניות בחברה  אחוז בעלות לפי שווי חברה + מושב בדירקטוריון מייעץ.</p><a href="#contact" class="btn btn-outline">בחר מסלול</a></div>
+    </div>
+
+    <h2 style="text-align:center;">תחזיות רווח (שנתיות, להמחשה בלבד)</h2>
+    <div class="grid-3">
+        <div class="card">📉 שמרני<br>5,000 משתמשים × 10 → <strong>600,000</strong></div>
+        <div class="card">📊 בינוני<br>20,000 משתמשים × 15 → <strong>3.6M</strong></div>
+        <div class="card">📈 אגרסיבי<br>50,000 משתמשים × 20 → <strong>12M</strong></div>
+    </div>
+
+    <div class="calculator" id="calculator">
+        <h3 style="margin-bottom: 20px;">מחשבון החזר השקעה אישי</h3>
+        <label>מספר משתמשים פעילים צפוי:</label>
+        <input type="number" id="users" value="20000">
+        <label>רווח נקי חודשי למשתמש ():</label>
+        <input type="number" id="profitPerUser" value="15">
+        <label>אחוז מהרווחים למשקיעים (%):</label>
+        <input type="number" id="investorShare" value="10">
+        <label>סכום ההשקעה שלך ():</label>
+        <input type="number" id="investment" value="50000">
+        <button class="btn" id="calcBtn">חשב החזר משוער</button>
+        <div class="result-box" id="resultDisplay">
+            * החישוב להמחשה בלבד, אינו מהווה התחייבות.
+        </div>
+    </div>
+</div>
+
+<footer>
+    © הארנק הכשר  דף משקיעים | SLH Spark<br>
+    ⚠️ גילוי סיכון: השקעה בהייטק ובקריפטו כרוכה בסיכון. אין הבטחת תשואה.
+</footer>
+
+<script>
+    function updateCountdown() {
+        const target = new Date(2026, 10, 7); // 7.11.2026 (חודש 10 = נובמבר)
+        const now = new Date();
+        const diff = target - now;
+        if(diff <= 0) { document.getElementById('countdown').innerHTML = "ההרשמה בעיצומה!"; return; }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (86400000)) / 3600000);
+        const mins = Math.floor((diff % 3600000) / 60000);
+        document.getElementById('countdown').innerHTML = ${days} ימים :  שעות :  דקות;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    document.getElementById('calcBtn').addEventListener('click', () => {
+        const users = parseFloat(document.getElementById('users').value);
+        const profitPer = parseFloat(document.getElementById('profitPerUser').value);
+        const share = parseFloat(document.getElementById('investorShare').value) / 100;
+        const inv = parseFloat(document.getElementById('investment').value);
+        if(isNaN(users) || isNaN(profitPer) || isNaN(share) || isNaN(inv)) return;
+        const annualProfit = users * profitPer * 12;
+        const investorAnnual = annualProfit * share;
+        const roi = (investorAnnual / inv) * 100;
+        document.getElementById('resultDisplay').innerHTML = 
+            <strong>רווח שנתי לחברה:</strong> <br>
+            <strong>חלק המשקיעים (%):</strong> <br>
+            <strong>תשואה שנתית על השקעתך:</strong> %<br>
+            <strong>החזר חודשי משוער:</strong> <br>
+            <small>הנתונים להמחשה בלבד, אינם מבטיחים תשואה עתידית.</small>
+        ;
+    });
+</script>
+</body>
+</html>
